@@ -19,7 +19,7 @@ It aims to create a datamodel for normalized terms and definitions that can be e
 ### Publishing terms and definitions as Linked Open Data
 Below we list a number of resources to help other standard bodies publish their terms and definitions as Linked Open Data.
 
-  - [Excel2RDF](https://github.com/fair-data-collective/excel2rdf-template): Convert and Excel template to RDF
+  - [Excel2RDF](https://github.com/fair-data-collective/excel2rdf-template): Convert an Excel template to RDF
   - [XML2CSV](https://github.com/Netherlands-Standardization-Institute/xml2csv): Extract terms and definitions from XML using the NISO STS
   - [Skosmos](https://skosmos.org): View terms using an open source web-based SKOS browser and publishing tool
   - [NEN controlled vocabulary](https://github.com/Netherlands-Standardization-Institute/controlled-vocabulary): Example of controlled vocabularies from the [NEN](https://nen.nl)
