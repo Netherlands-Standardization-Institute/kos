@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The NEN Knowledge Organization System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "http://purl.org/nen/kos",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>The NEN knowledge organization system describes a data model for standardisation bodies based on SKOS.</p>\n<p><strong>URL:</strong> https://data.nen.nl/kg/</p>\n<p><strong>Creators</strong>: <a href=\"https://kweri.nl\">Robert Matousek</a></p>\n<p><strong>License:</strong> <a href=\"https://creativecommons.org/licenses/by/4.0/legalcode\">Creative Commons Attribution 4.0 International</a></p>\n<p><strong>Website:</strong> https://data.nen.nl/skosmos/</p>"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "The NEN Knowledge Organization System"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+<!--//
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.8.3</span>
+  </div>
+//-->	
+  <h1>The NEN Knowledge Organization System</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>http://purl.org/nen/kos</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            Robert Matousek<br/>
+        </dd>
+        <dt>Version Information</dt>
+        <dd>1.0</dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="http://purl.org/nen/kos">RDF (XML)</a></dd>
+        <dt>License</dt>
+        <dd><a href="https://creativecommons.org/licenses/by/4.0/legalcode">Creative Commons Attribution 4.0 International</a></dd>
+        <dt>Website</dt>
+        <dd><a href="https://data.nen.nl/skosmos/">https://data.nen.nl/skosmos/</a></dd>
+    </dl>
+    <h2>Abstract</h2>
+    <div id="abstract">
+        <p>The NEN Knowledge Organization System describes a data model for standardisation bodies based on SKOS and Dublin Core.
+		It consists of:</p>
+		<ul>
+			<li>the International Classification for Standards, see [<a class="citation" rel="citation" href="#bib-ICS">ICS</a>],</li>
+			<li>a catalog with standard documents,</li> 
+			<li>and a controlled vocabulary with terms and definitions.</li>
+		</ul>
+		<p>The SKOS data model views this knowledge organization system as a concept scheme comprising a set of concepts. These SKOS concept schemes and SKOS concepts are identified by URIs, enabling anyone to refer to ICS classes, documents and terms and definitions unambiguously from any context, and making them a part of the World Wide Web.</p>
+		<p>This document is intended for readers who are involved in the design and implementation of information systems, and who already have a good understanding of Semantic Web technology, especially RDF, OWL and SKOS, see the [<a class="citation" rel="citation" href="#bib-SKOS">SKOS-REFERENCE</a>].		
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#intro">Introduction</a></li>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#classes">Classes</a></li>
+        <li><a href="#properties">Properties</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+		<li><a href="#references">References</a></li>
+    </ol>
+</section>
+<section id="intro">
+    <h2>Introduction</h2>
+    <div>
+        <p>The NEN Knowledge Organization System aims to create a datamodel for normalized terms and definitions that can be easily published using Skosmos. Skosmos is an open source web-based SKOS browser and publishing tool, see [<a class="citation" rel="citation" href="#bib-SKOSMOS">SKOSMOS</a>]. It provides users with access to controlled vocabularies for indexing, information retrieval and vocabulary development.</p>
+		<p>Note that other ontologies exist for describing aspects of the publishing domain as well as the structure and elements of standards. We opted for a simple datamodel that enables standards bodies to make a first step in bringing standards to the semantic web.
+		</p>
+    </div>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+		<img src="img/nenkos.svg" />
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Class">ICS Class</a></li>
+        <li><a href="#Document">Standards document</a></li>
+        <li><a href="#Concept">Normalized concept</a></li>
+    </ul>
+    <div class="entity class" id="Class">
+        <h3>ICS Class<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/ics/Class</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    A class in the International Classification for Standards.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://data.nen.nl/ics/hasDocument">ics:hasDocument</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://data.nen.nl/vocab/inIcs">vocab:inIcs</a><br/>
+                    <a href="https://data.nen.nl/docs/memberOf">docs:memberOf</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Document">
+        <h3>Standards document<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/docs/Document</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    A standards document.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/memberOf">docs:memberOf</a><br/>
+                    <a href="https://data.nen.nl/docs/hasConcept">docs:hasConcept</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://data.nen.nl/ics/hasDocument">ics:hasDocument</a><br/>
+                    <a href="https://data.nen.nl/vocab/inDocument">vocab:inDocument</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>	
+    <div class="entity class" id="Concept">
+        <h3>Normalized concept<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/vocab/Concept</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    A normalized term and definition.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://data.nen.nl/vocab/inDocument">vocab:inDocument</a><br/>
+                    <a href="https://data.nen.nl/vocab/inIcs">vocab:inIcs</a><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/hasConcept">docs:hasConcept</a><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="properties">
+    <h2>Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#hasconcept">has concept</a></li>
+        <li><a href="#memberofICSclass">is member of ICS class</a></li>
+        <li><a href="#hasdocument">has document</a></li>
+        <li><a href="#indocument">in document</a></li>
+        <li><a href="#inICSclass">in ICS class</a></li>
+    </ul>
+    <div class="entity property" id="hasdocument">
+        <h3>has document<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/ics/hasDocument</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    The ICS class contains the standards document.<br><br>
+                </td>
+            </tr>			
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/ics/Class">ics:Class</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/Document">docs:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="memberofICSclass">
+        <h3>is member of ICS class<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/docs/memberOf</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    The document is a member of the ICS class.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/Document">docs:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/ics/Class">ics:Class</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasconcept">
+        <h3>has concept<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/docs/hasConcept</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    The standards document defines the concept in its terms and definitions.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/Document">docs:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/vocab/Concept">vocab:Concept</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="indocument">
+        <h3>in document<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/vocab/inDocument</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    The concept is defined in the terms and definitions of the document.<br><br>
+                </td>
+            </tr>				
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/vocab/Concept">vocab:Concept</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/docs/Document">docs:Document</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="inICSclass">
+        <h3>in ICS class<sup title="property" class="sup-p">p</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://data.nen.nl/vocab/inIcs</code></td>
+            </tr>
+			<tr>
+                <th>Definition</th>
+                <td>
+                    The concept is included in the ICS class, e.g. in the description.<br><br>
+                </td>
+            </tr>			
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/vocab/Concept">vocab:Concept</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="https://data.nen.nl/ics/Class">ics:Class</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </section>
+
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>dc</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>docs</dt>
+        <dd><code>https://data.nen.nl/docs/</code></dd>
+        <dt>ics</dt>
+        <dd><code>https://data.nen.nl/ics/</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>vocab</dt>
+        <dd><code>https://data.nen.nl/vocab/</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+<section id="legend">
+  <h2>Legend</h2>
+  <table class="entity">
+	  <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+	  <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+	  <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+	  <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+	  <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+	  <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+	  <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+  </table>
+</section>
+<section id="references" style="text-align: left;">
+  <h2>References</h2> 
+<dl class="bibliography">
+
+<dt id="bib-DC">[DC]</dt>
+<dd>DCMI Usage Board <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/"><cite>DCMI Metadata Terms</cite></a>. 20 January 2020. Latest version available at <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/">https://www.dublincore.org/specifications/dublin-core/dcmi-terms/</a></dd>
+
+<dt id="bib-ICS">[ICS]</dt>
+<dd>ISO <a href="https://www.iso.org/files/live/sites/isoorg/files/archive/pdf/en/international_classification_for_standards.pdf"><cite>International Classification for Standards, 2015</cite></a>. 2015</dd>
+
+<dt id="bib-SKOS">[SKOS-REFERENCE]</dt>
+<dd> Alistair, M., Bechhofer, S., <a href="http://www.w3.org/TR/2009/REC-skos-reference-20090818/"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. 18 August 2009, W3C Recommendation. Latest version available at <a href="http://www.w3.org/TR/skos-reference">http://www.w3.org/TR/skos-reference</a></dd>
+
+<dt id="bib-SKOS">[SKOSMOS]</dt>
+<dd> Suominen, O., Ylikotila, H., Pessala, S., Lappalainen, M., Frosterus, M., Tuominen, J., Baker, T., Caracciolo, C., Retterath, A., <a href="https://skosmos.org/publishing-skos-vocabularies-with-skosmos.pdf"><cite>SKOS Simple Knowledge Organization System Reference</cite></a>. June 2015, Manuscript submitted for review.</dd>
+
+</dl>
+</section>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE Ontology [
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="https://purl.org/nen/kos"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     ontologyIRI="https://purl.org/nen/kos">
+    <Prefix name="" IRI="http://www.semanticweb.org/owl/owlapi/turtle#"/>
+    <Prefix name="dc" IRI="http://purl.org/dc/elements/1.1/"/>
+    <Prefix name="ics" IRI="https://data.nen.nl/ics/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="docs" IRI="https://data.nen.nl/docs/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="skos" IRI="http://www.w3.org/2004/02/skos/core#"/>
+    <Prefix name="vocab" IRI="https://data.nen.nl/vocab/"/>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:date"/>
+        <Literal datatypeIRI="&rdf;PlainLiteral">2023-07-13</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:rights"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">This work is distributed under a Creative Commons Attribution 4.0 International license (https://creativecommons.org/licenses/by/4.0/legalcode).</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The NEN knowledge organization system describes the International Classification for Standards (ICS), a catalog with standard documents and a controlled vocabulary with terms and definitions. 
+
+**URL:** https://data.nen.nl/kg/
+
+**Creators**: [Robert Matousek](https://kweri.nl)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** https://data.nen.nl/skosmos/</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="owl:versionInfo"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">1.1</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The NEN knowledge organization system describes:
+		
+		the International Classification for Standards (ICS), 
+		
+		a catalog with standard documents 
+		
+		and a controlled vocabulary with terms and definitions.
+		
+		It describes a data model for standardisation bodies. 
+</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+        <IRI>https://data.nen.nl/kg/graph-visualization.png</IRI>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+        <Literal datatypeIRI="&xsd;string">Robert Matousek</Literal>
+    </Annotation>
+    <Annotation>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">The NEN Ontology</Literal>
+    </Annotation>
+    <Declaration>
+        <Class abbreviatedIRI="docs:Document"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="ics:Class"/>
+    </Declaration>
+    <Declaration>
+        <Class abbreviatedIRI="vocab:Concept"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:creator"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:date"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:description"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:rights"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="dc:title"/>
+    </Declaration>
+    <SubClassOf>
+        <Class abbreviatedIRI="docs:Document"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="ics:Class"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="vocab:Concept"/>
+        <Class abbreviatedIRI="skos:Concept"/>
+    </SubClassOf>
+    <InverseObjectProperties>
+        <ObjectProperty abbreviatedIRI="docs:hasConcept"/>
+        <ObjectProperty abbreviatedIRI="vocab:inDocument"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty abbreviatedIRI="ics:hasDocument"/>
+        <ObjectProperty abbreviatedIRI="docs:memberOf"/>
+    </InverseObjectProperties>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="docs:hasConcept"/>
+        <Class abbreviatedIRI="vocab:Concept"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="docs:memberOf"/>
+        <Class abbreviatedIRI="ics:Class"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="ics:hasDocument"/>
+        <Class abbreviatedIRI="docs:Document"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="vocab:inDocument"/>
+        <Class abbreviatedIRI="docs:Document"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty abbreviatedIRI="vocab:inIcs"/>
+        <Class abbreviatedIRI="ics:Class"/>
+    </ObjectPropertyRange>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Document de normes</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">Normdocument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Normdokument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Standards document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:hasConcept</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">a notion</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:hasConcept</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has concept</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:hasConcept</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">hat Begriff</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:hasConcept</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">heeft concept</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:memberOf</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">est membre de la classe ICS</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:memberOf</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">is Lid van ICS klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:memberOf</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">is member of ICS class</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>docs:memberOf</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">ist Mitglied der ICS Klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:Class</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">ICS Klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:Class</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">ICS class</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:Class</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">ICS classe</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:Class</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">ICS klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:hasDocument</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">a document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:hasDocument</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">has document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:hasDocument</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">hat Dokument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>ics:hasDocument</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">heeft document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">Genormalizeerd begrip</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">Normalized concept</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Normaliziertes Begriff</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">Notion normalisée</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inDocument</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">dans le document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inDocument</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">im Dokument</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inDocument</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">in document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inDocument</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">in document</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inIcs</AbbreviatedIRI>
+        <Literal xml:lang="de" datatypeIRI="&rdf;PlainLiteral">Mitglied der ICS Klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inIcs</AbbreviatedIRI>
+        <Literal xml:lang="en" datatypeIRI="&rdf;PlainLiteral">in ICS class</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inIcs</AbbreviatedIRI>
+        <Literal xml:lang="nl" datatypeIRI="&rdf;PlainLiteral">in ICS klasse</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <AbbreviatedIRI>vocab:inIcs</AbbreviatedIRI>
+        <Literal xml:lang="fr" datatypeIRI="&rdf;PlainLiteral">membre de la classe ICS</Literal>
+    </AnnotationAssertion>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty abbreviatedIRI="docs:hasConcept"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+    </AnnotationPropertyDomain>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty abbreviatedIRI="docs:memberOf"/>
+        <AbbreviatedIRI>docs:Document</AbbreviatedIRI>
+    </AnnotationPropertyDomain>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty abbreviatedIRI="ics:hasDocument"/>
+        <AbbreviatedIRI>ics:Class</AbbreviatedIRI>
+    </AnnotationPropertyDomain>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty abbreviatedIRI="vocab:inDocument"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+    </AnnotationPropertyDomain>
+    <AnnotationPropertyDomain>
+        <AnnotationProperty abbreviatedIRI="vocab:inIcs"/>
+        <AbbreviatedIRI>vocab:Concept</AbbreviatedIRI>
+    </AnnotationPropertyDomain>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+

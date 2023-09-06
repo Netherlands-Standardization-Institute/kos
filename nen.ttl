@@ -1,0 +1,286 @@
+@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix ics: <https://data.nen.nl/ics/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix docs: <https://data.nen.nl/docs/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vocab: <https://data.nen.nl/vocab/> .
+@base <https://purl.org/nen/kos> .
+
+<https://purl.org/nen/kos> rdf:type owl:Ontology ;
+                           
+                           dc:creator "Robert Matousek"^^xsd:string ;
+                           
+                           dc:date "2023-07-13" ;
+                           
+                           owl:versionInfo "1.1"@en ;
+                           
+                           dc:title "The NEN Ontology"@en ;
+                           
+                           rdfs:comment """The NEN knowledge organization system describes the International Classification for Standards (ICS), a catalog with standard documents and a controlled vocabulary with terms and definitions. 
+
+**URL:** https://data.nen.nl/kos/
+
+**Creators**: [Robert Matousek](https://kweri.nl)
+
+**License:** [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/legalcode)
+
+**Website:** https://data.nen.nl/skosmos/"""@en ;
+                           
+                           dc:description """The NEN knowledge organization system describes:
+		
+		the International Classification for Standards (ICS), 
+		
+		a catalog with standard documents 
+		
+		and a controlled vocabulary with terms and definitions.
+		
+		It describes a data model for standardisation bodies. 
+"""@en ;
+                           
+                           dc:rights "This work is distributed under a Creative Commons Attribution 4.0 International license (https://creativecommons.org/licenses/by/4.0/legalcode)."@en ;
+                           
+                           dc:description <https://data.nen.nl/kg/graph-visualization.png> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/creator
+
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/date
+
+dc:date rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/rights
+
+dc:rights rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/title
+
+dc:title rdf:type owl:AnnotationProperty .
+
+
+
+###  https://data.nen.nl/docs/hasConcept
+
+docs:hasConcept rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "hat Begriff"@de ,
+                           "has concept"@en ,
+                           "a notion"@fr ,
+                           "heeft concept"@nl ;
+                
+                rdfs:domain docs:Document .
+
+
+
+###  https://data.nen.nl/docs/memberOf
+
+docs:memberOf rdf:type owl:AnnotationProperty ;
+              
+              rdfs:label "ist Mitglied der ICS Klasse"@de ,
+                         "is member of ICS class"@en ,
+                         "est membre de la classe ICS"@fr ,
+                         "is Lid van ICS klasse"@nl ;
+              
+              rdfs:domain docs:Document .
+
+
+
+###  https://data.nen.nl/ics/hasDocument
+
+ics:hasDocument rdf:type owl:AnnotationProperty ;
+                
+                rdfs:label "hat Dokument"@de ,
+                           "has document"@en ,
+                           "a document"@fr ,
+                           "heeft document"@nl ;
+                
+                rdfs:domain ics:Class .
+
+
+
+###  https://data.nen.nl/vocab/inDocument
+
+vocab:inDocument rdf:type owl:AnnotationProperty ;
+                 
+                 rdfs:label "im Dokument"@de ,
+                            "in document"@en ,
+                            "dans le document"@fr ,
+                            "in document"@nl ;
+                 
+                 rdfs:domain vocab:Concept .
+
+
+
+###  https://data.nen.nl/vocab/inIcs
+
+vocab:inIcs rdf:type owl:AnnotationProperty ;
+            
+            rdfs:label "Mitglied der ICS Klasse"@de ,
+                       "in ICS class"@en ,
+                       "membre de la classe ICS"@fr ,
+                       "in ICS klasse"@nl ;
+            
+            rdfs:domain vocab:Concept .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://data.nen.nl/docs/hasConcept
+
+docs:hasConcept rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "hat Begriff"@de ,
+                           "has concept"@en ,
+                           "a notion"@fr ,
+                           "heeft concept"@nl ;
+                
+                rdfs:range vocab:Concept ;
+                
+                owl:inverseOf vocab:inDocument .
+
+
+
+###  https://data.nen.nl/docs/memberOf
+
+docs:memberOf rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "ist Mitglied der ICS Klasse"@de ,
+                         "is member of ICS class"@en ,
+                         "est membre de la classe ICS"@fr ,
+                         "is Lid van ICS klasse"@nl ;
+              
+              rdfs:range ics:Class .
+
+
+
+###  https://data.nen.nl/ics/hasDocument
+
+ics:hasDocument rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "hat Dokument"@de ,
+                           "has document"@en ,
+                           "a document"@fr ,
+                           "heeft document"@nl ;
+                
+                rdfs:range docs:Document ;
+                
+                owl:inverseOf docs:memberOf .
+
+
+
+###  https://data.nen.nl/vocab/inDocument
+
+vocab:inDocument rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:label "im Dokument"@de ,
+                            "in document"@en ,
+                            "dans le document"@fr ,
+                            "in document"@nl ;
+                 
+                 rdfs:range docs:Document .
+
+
+
+###  https://data.nen.nl/vocab/inIcs
+
+vocab:inIcs rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "Mitglied der ICS Klasse"@de ,
+                       "in ICS class"@en ,
+                       "membre de la classe ICS"@fr ,
+                       "in ICS klasse"@nl ;
+            
+            rdfs:range ics:Class .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+
+skos:Concept rdf:type owl:Class .
+
+
+
+###  https://data.nen.nl/docs/Document
+
+docs:Document rdf:type owl:Class ;
+              
+              rdfs:label "Normdokument"@de ,
+                         "Standards document"@en ,
+                         "Document de normes"@fr ,
+                         "Normdocument"@nl ;
+              
+              rdfs:subClassOf skos:Concept .
+
+
+
+###  https://data.nen.nl/ics/Class
+
+ics:Class rdf:type owl:Class ;
+          
+          rdfs:label "ICS Klasse"@de ,
+                     "ICS class"@en ,
+                     "ICS classe"@fr ,
+                     "ICS klasse"@nl ;
+          
+          rdfs:subClassOf skos:Concept .
+
+
+
+###  https://data.nen.nl/vocab/Concept
+
+vocab:Concept rdf:type owl:Class ;
+              
+              rdfs:label "Normaliziertes Begriff"@de ,
+                         "Normalized concept"@en ,
+                         "Notion normalisée"@fr ,
+                         "Genormalizeerd begrip"@nl ;
+              
+              rdfs:subClassOf skos:Concept .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
